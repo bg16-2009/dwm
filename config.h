@@ -21,6 +21,12 @@ static const char *colors[][3]      = {
 	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
 };
 
+static const char *const autostart[] = {
+	"setxkbmap", "-option", "caps:ctrl_modifier", NULL,
+    "xinput", "set-prop", "AlpsPS/2 ALPS DualPoint TouchPad", "libinput Tapping Enabled", "1", NULL,
+	NULL /* terminate */
+};
+
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
@@ -32,6 +38,11 @@ static const Rule rules[] = {
 
 	/* class       instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
 	{ "ghostty",   NULL,     NULL,           0,         0,          1,           0,        -1 },
+	{ "zen",       NULL,     NULL,           1<<1,      0,          0,           0,        -1 },
+	{ "discord",   NULL,     NULL,           1<<2,      0,          0,           0,        -1 },
+	{ NULL,        NULL,     "Spotify",      1<<3,      0,          0,           0,        -1 },
+	{ NULL,        NULL,     "Spotify Premium",      1<<3,      0,          0,           0,        -1 },
+	{ "obsidian",  NULL,     NULL,           1<<4,      0,          0,           0,        -1 },
 	{ NULL,        NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
 };
 
